@@ -3,15 +3,19 @@ var LocationActions = require('../actions/LocationActions');
 
 class FavoritesStore {
   constructor() {
-    this.locations = [];
-
+    this.locations = {} ;
     this.bindListeners({
-      addFavoriteLocation: LocationActions.FAVORITE_LOCATION
+      addFavoriteLocation: LocationActions.FAVORITE_LOCATION,
+      removeFavoriteLocation: LocationActions.UNFAVORITE_LOCATION
     });
   }
 
   addFavoriteLocation(location) {
-    this.locations.push(location);
+    this.locations[location.id] = location;
+  }
+
+  removeFavoriteLocation(location) {
+    this.locations[location.id] = null
   }
 }
 

@@ -47,22 +47,10 @@ class LocationStore {
 
   setFavorites(location) {
     this.waitFor(FavoritesStore);
-
-    var favoritedLocations = FavoritesStore.getState().locations;
-
-    this.resetAllFavorites();
-
-    favoritedLocations.forEach((location) => {
-      // find each location in the array
-      for (var i = 0; i < this.locations.length; i += 1) {
-
-        // set has_favorite to true
-        if (this.locations[i].id === location.id) {
-          this.locations[i].has_favorite = true;
-          break;
-        }
-      }
-    });
+    const favorites = FavoritesStore.getState().locations
+    this.locations.forEach(function(location) {
+        location.has_favorite = !!favorites[location.id]
+    })
   }
 
   getLocation(id) {

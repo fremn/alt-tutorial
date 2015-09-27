@@ -6,13 +6,13 @@ var LocationActions = require('../actions/LocationActions');
 
 var Favorites = React.createClass({
   render() {
+    var favs = []
+    for (var id in this.props.locations) {
+        favs.push(<li key={id}>{this.props.locations[id]}</li>)
+    }
     return (
       <ul>
-        {this.props.locations.map((location, i) => {
-          return (
-            <li key={i}>{location.name}</li>
-          );
-        })}
+        {favs}
       </ul>
     );
   }
