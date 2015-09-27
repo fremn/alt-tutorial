@@ -16,7 +16,7 @@ class LocationActions {
   favoriteLocation(location) {
     this.dispatch(location);
   }
-  unfavoriteLocation(location) {
+  unFavoriteLocation(location) {
     this.dispatch(location);
   }
 }

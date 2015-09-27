@@ -6,7 +6,7 @@ class FavoritesStore {
     this.locations = {} ;
     this.bindListeners({
       addFavoriteLocation: LocationActions.FAVORITE_LOCATION,
-      removeFavoriteLocation: LocationActions.UNFAVORITE_LOCATION
+      removeFavoriteLocation: LocationActions.UN_FAVORITE_LOCATION
     });
   }
 
@@ -15,7 +15,7 @@ class FavoritesStore {
   }
 
   removeFavoriteLocation(location) {
-    this.locations[location.id] = null
+    delete this.locations[location.id]
   }
 }
 

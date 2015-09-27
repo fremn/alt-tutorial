@@ -5,19 +5,31 @@ var FavoritesStore = require('../stores/FavoritesStore');
 var LocationActions = require('../actions/LocationActions');
 
 var Favorites = React.createClass({
-  render() {
-    var favs = []
-    for (var id in this.props.locations) {
-        favs.push(<li key={id}>{this.props.locations[id]}</li>)
-    }
-    return (
-      <ul>
-        {favs}
-      </ul>
-    );
-  }
-});
+    removeFave(ev) {
+      var location = LocationStore.getLocation(
+         Number(ev.target.getAttribute('data-id'))
+      );
+      LocationActions.unFavoriteLocation(location);
+    },
 
+render() {
+var favs = []
+for (var id in this.props.locations) {
+    favs.push(
+        <li key={id}>{this.props.locations[id]}
+            <button onClick={this.removeFave} data-id={id}>
+              unFavorite
+            </button>
+        </li>
+    )
+}
+return (
+  <ul>
+    {favs}
+  </ul>
+);
+}
+});
 var AllLocations = React.createClass({
   addFave(ev) {
     var location = LocationStore.getLocation(

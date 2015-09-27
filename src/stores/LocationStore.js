@@ -12,7 +12,7 @@ class LocationStore {
       handleUpdateLocations: LocationActions.UPDATE_LOCATIONS,
       handleFetchLocations: LocationActions.FETCH_LOCATIONS,
       handleLocationsFailed: LocationActions.LOCATIONS_FAILED,
-      setFavorites: LocationActions.FAVORITE_LOCATION
+      setFavorites: [LocationActions.FAVORITE_LOCATION, LocationActions.UN_FAVORITE_LOCATION]
     });
 
     this.exportPublicMethods({
