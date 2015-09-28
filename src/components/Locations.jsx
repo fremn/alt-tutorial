@@ -16,7 +16,8 @@ render() {
 var favs = []
 for (var id in this.props.locations) {
     favs.push(
-        <li key={id}>{this.props.locations[id]}
+        <li key={id}>
+            {this.props.locations[id].name}
             <button onClick={this.removeFave} data-id={id}>
               unFavorite
             </button>
